@@ -1,16 +1,16 @@
 package com.sydneyhass.weatherstation.model;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 public class Station {
     private String stationName;
     private String province;
-    private Date date;
+    private LocalDate date;
     private float meanTemp;
     private float highestTemp;
     private float lowestTemp;
 
-    public Station(String stationName, String province, Date date, float meanTemp, float highestTemp, float lowestTemp) {
+    public Station(String stationName, String province, LocalDate date, float meanTemp, float highestTemp, float lowestTemp) {
         this.stationName = stationName;
         this.province = province;
         this.date = date;
@@ -35,11 +35,11 @@ public class Station {
         this.province = province;
     }
 
-    public Date getDate() {
+    public LocalDate getDate() {
         return date;
     }
 
-    public void setDate(Date date) {
+    public void setDate(LocalDate date) {
         this.date = date;
     }
 
