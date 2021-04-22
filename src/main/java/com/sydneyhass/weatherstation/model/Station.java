@@ -6,11 +6,11 @@ public class Station {
     private String stationName;
     private String province;
     private LocalDate date;
-    private float meanTemp;
-    private float highestTemp;
-    private float lowestTemp;
+    private Float meanTemp;
+    private Float highestTemp;
+    private Float lowestTemp;
 
-    public Station(String stationName, String province, LocalDate date, float meanTemp, float highestTemp, float lowestTemp) {
+    public Station(String stationName, String province, LocalDate date, Float meanTemp, Float highestTemp, Float lowestTemp) {
         this.stationName = stationName;
         this.province = province;
         this.date = date;
@@ -43,27 +43,27 @@ public class Station {
         this.date = date;
     }
 
-    public float getMeanTemp() {
+    public Float getMeanTemp() {
         return meanTemp;
     }
 
-    public void setMeanTemp(float meanTemp) {
+    public void setMeanTemp(Float meanTemp) {
         this.meanTemp = meanTemp;
     }
 
-    public float getHighestTemp() {
+    public Float getHighestTemp() {
         return highestTemp;
     }
 
-    public void setHighestTemp(float highestTemp) {
+    public void setHighestTemp(Float highestTemp) {
         this.highestTemp = highestTemp;
     }
 
-    public float getLowestTemp() {
+    public Float getLowestTemp() {
         return lowestTemp;
     }
 
-    public void setLowestTemp(float lowestTemp) {
+    public void setLowestTemp(Float lowestTemp) {
         this.lowestTemp = lowestTemp;
     }
 

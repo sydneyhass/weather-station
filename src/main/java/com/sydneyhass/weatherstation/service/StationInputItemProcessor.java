@@ -24,9 +24,9 @@ public class StationInputItemProcessor implements ItemProcessor<StationInput, St
         String province = stationInput.getProvince();
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/uuuu");
         LocalDate date = LocalDate.parse(stationInput.getDate(), formatter);
-        float meanTemp = stationInput.getMeanTemp().isEmpty()? 0: Float.parseFloat(stationInput.getMeanTemp());
-        float minTemp = stationInput.getLowestTemp().isEmpty()? 0: Float.parseFloat(stationInput.getLowestTemp());
-        float maxTemp = stationInput.getHighestTemp().isEmpty()? 0: Float.parseFloat(stationInput.getHighestTemp());
+        Float meanTemp = stationInput.getMeanTemp().isEmpty()? null: Float.parseFloat(stationInput.getMeanTemp());
+        Float minTemp = stationInput.getLowestTemp().isEmpty()? null: Float.parseFloat(stationInput.getLowestTemp());
+        Float maxTemp = stationInput.getHighestTemp().isEmpty()? null: Float.parseFloat(stationInput.getHighestTemp());
 
         return new Station(stationName, province, date, meanTemp, minTemp, maxTemp);
     }
