@@ -66,4 +66,16 @@ public class Station {
     public void setLowestTemp(float lowestTemp) {
         this.lowestTemp = lowestTemp;
     }
+
+    @Override
+    public String toString() {
+        return "Station{" +
+                "stationName='" + stationName + '\'' +
+                ", province='" + province + '\'' +
+                ", date=" + date +
+                ", meanTemp=" + meanTemp +
+                ", highestTemp=" + highestTemp +
+                ", lowestTemp=" + lowestTemp +
+                '}';
+    }
 }
