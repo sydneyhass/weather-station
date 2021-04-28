@@ -10,11 +10,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Component;
 
-import javax.xml.crypto.Data;
-import java.sql.Date;
-import java.util.Calendar;
-import java.util.Locale;
-
 @Component
 public class JobCompletionNotificationListener extends JobExecutionListenerSupport {
     private static final Logger log = LoggerFactory.getLogger(JobCompletionNotificationListener.class);
@@ -31,14 +26,15 @@ public class JobCompletionNotificationListener extends JobExecutionListenerSuppo
         if(jobExecution.getStatus() == BatchStatus.COMPLETED) {
             log.info("!!! JOB FINISHED! Time to verify the results");
 
-            jdbcTemplate.query("SELECT station_name, province, record_date, mean_temp, max_temp, min_temp FROM station",
+            jdbcTemplate.query("SELECT id, station_name, province, date, mean_temp, highest_temp, lowest_temp FROM station",
                     (rs, row) -> new Station(
-                            rs.getString(1),
+                            rs.getLong(1),
                             rs.getString(2),
-                            rs.getDate(3).toLocalDate(),
-                            rs.getFloat(4),
+                            rs.getString(3),
+                            rs.getDate(4).toLocalDate(),
                             rs.getFloat(5),
-                            rs.getFloat(6))
+                            rs.getFloat(6),
+                            rs.getFloat(7))
             ).forEach(station -> log.info("Found <" + station + "> in the database."));
         }
     }

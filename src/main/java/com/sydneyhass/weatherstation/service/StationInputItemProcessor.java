@@ -6,11 +6,9 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.batch.item.ItemProcessor;
 
-import java.text.SimpleDateFormat;
-import java.time.Instant;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
-import java.time.temporal.TemporalAccessor;
+import java.util.UUID;
 
 public class StationInputItemProcessor implements ItemProcessor<StationInput, Station> {
 
@@ -20,6 +18,7 @@ public class StationInputItemProcessor implements ItemProcessor<StationInput, St
     public Station process(StationInput stationInput) throws Exception {
         log.info(stationInput.toString());
 
+        Long id = UUID.randomUUID().getMostSignificantBits() & Long.MAX_VALUE;
         String stationName = stationInput.getStationName();
         String province = stationInput.getProvince();
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/uuuu");
@@ -28,6 +27,6 @@ public class StationInputItemProcessor implements ItemProcessor<StationInput, St
         Float minTemp = stationInput.getLowestTemp().isEmpty()? null: Float.parseFloat(stationInput.getLowestTemp());
         Float maxTemp = stationInput.getHighestTemp().isEmpty()? null: Float.parseFloat(stationInput.getHighestTemp());
 
-        return new Station(stationName, province, date, meanTemp, minTemp, maxTemp);
+        return new Station(id, stationName, province, date, meanTemp, minTemp, maxTemp);
     }
 }

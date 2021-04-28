@@ -1,8 +1,18 @@
 package com.sydneyhass.weatherstation.model;
 
+import org.springframework.lang.Nullable;
+
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import java.time.LocalDate;
 
+@Entity
 public class Station {
+
+    @Id
+    private Long id;
     private String stationName;
     private String province;
     private LocalDate date;
@@ -10,13 +20,26 @@ public class Station {
     private Float highestTemp;
     private Float lowestTemp;
 
-    public Station(String stationName, String province, LocalDate date, Float meanTemp, Float highestTemp, Float lowestTemp) {
+    protected Station() {
+
+    }
+
+    public Station(Long id, String stationName, String province, LocalDate date, Float meanTemp, Float highestTemp, Float lowestTemp) {
+        this.id = id;
         this.stationName = stationName;
         this.province = province;
         this.date = date;
         this.meanTemp = meanTemp;
         this.highestTemp = highestTemp;
         this.lowestTemp = lowestTemp;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getStationName() {
@@ -70,7 +93,8 @@ public class Station {
     @Override
     public String toString() {
         return "Station{" +
-                "stationName='" + stationName + '\'' +
+                "id='" + id + '\'' +
+                ", stationName='" + stationName + '\'' +
                 ", province='" + province + '\'' +
                 ", date=" + date +
                 ", meanTemp=" + meanTemp +

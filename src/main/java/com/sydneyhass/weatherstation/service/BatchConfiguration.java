@@ -25,6 +25,8 @@ import javax.sql.DataSource;
 @EnableBatchProcessing
 public class BatchConfiguration {
 
+    private final String[] FIELDS = new String[] {"stationName","province","date","meanTemp","highestTemp","lowestTemp"};
+
     @Autowired
     public JobBuilderFactory jobBuilderFactory;
 
@@ -38,7 +40,7 @@ public class BatchConfiguration {
                 .resource(new ClassPathResource("eng-climate-summary.csv"))
                 .linesToSkip(1)
                 .delimited()
-                .names("stationName","province","date","meanTemp","highestTemp","lowestTemp")
+                .names(FIELDS)
                 .fieldSetMapper(new BeanWrapperFieldSetMapper<StationInput>() {{
                     setTargetType(StationInput.class);
                 }})
@@ -54,7 +56,8 @@ public class BatchConfiguration {
     public JdbcBatchItemWriter<Station> writer(DataSource dataSource) {
         return new JdbcBatchItemWriterBuilder<Station>()
                 .itemSqlParameterSourceProvider(new BeanPropertyItemSqlParameterSourceProvider<>())
-                .sql("INSERT INTO station (station_name, province, record_date, mean_temp, highest_temp, lowest_temp) VALUES (:stationName, :province, :date, :meanTemp, :highestTemp, :lowestTemp)")
+                .sql("INSERT INTO station (id, station_name, province, date, mean_temp, highest_temp, lowest_temp) " +
+                        "VALUES (:id, :stationName, :province, :date, :meanTemp, :highestTemp, :lowestTemp)")
                 .dataSource(dataSource)
                 .build();
     }
