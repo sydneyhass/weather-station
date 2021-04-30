@@ -18,7 +18,6 @@ public class StationInputItemProcessor implements ItemProcessor<StationInput, St
     public Station process(StationInput stationInput) throws Exception {
         log.info(stationInput.toString());
 
-        Long id = UUID.randomUUID().getMostSignificantBits() & Long.MAX_VALUE;
         String stationName = stationInput.getStationName();
         String province = stationInput.getProvince();
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/uuuu");
@@ -27,6 +26,6 @@ public class StationInputItemProcessor implements ItemProcessor<StationInput, St
         Float minTemp = stationInput.getLowestTemp().isEmpty()? null: Float.parseFloat(stationInput.getLowestTemp());
         Float maxTemp = stationInput.getHighestTemp().isEmpty()? null: Float.parseFloat(stationInput.getHighestTemp());
 
-        return new Station(id, stationName, province, date, meanTemp, minTemp, maxTemp);
+        return new Station(stationName, province, date, meanTemp, minTemp, maxTemp);
     }
 }

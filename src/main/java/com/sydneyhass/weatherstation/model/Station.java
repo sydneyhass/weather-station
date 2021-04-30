@@ -12,6 +12,7 @@ import java.time.LocalDate;
 public class Station {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String stationName;
     private String province;
@@ -22,6 +23,15 @@ public class Station {
 
     protected Station() {
 
+    }
+
+    public Station(String stationName, String province, LocalDate date, Float meanTemp, Float highestTemp, Float lowestTemp) {
+        this.stationName = stationName;
+        this.province = province;
+        this.date = date;
+        this.meanTemp = meanTemp;
+        this.highestTemp = highestTemp;
+        this.lowestTemp = lowestTemp;
     }
 
     public Station(Long id, String stationName, String province, LocalDate date, Float meanTemp, Float highestTemp, Float lowestTemp) {
