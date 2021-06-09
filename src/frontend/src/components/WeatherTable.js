@@ -1,5 +1,7 @@
 import React from "react";
 
+import TableRow from "../components/TableRow";
+
 import {
   Table,
   Thead,
@@ -14,7 +16,7 @@ import {
   Link,
 } from "@chakra-ui/react";
 
-export default function WeatherTable({ props }) {
+export default function WeatherTable({ stations }) {
   return (
     <Box p="2.5rem">
       <Table variant="simple" size="lg">
@@ -22,23 +24,16 @@ export default function WeatherTable({ props }) {
           Click <i>Mean Temperature</i> for more details
         </TableCaption>
         <Thead>
-          <Th>Station Name</Th>
-          <Th>Date</Th>
-          <Th>Mean Temperature</Th>
+          <Tr>
+            <Th>Station Name</Th>
+            <Th>Date</Th>
+            <Th>Mean Temperature</Th>
+          </Tr>
         </Thead>
         <Tbody>
-          <Tr>
-            <Td>1</Td>
-            <Td>2</Td>
-            <Td>
-              <Link href="/">3</Link>
-            </Td>
-          </Tr>
-          <Tr>
-            <Td>1</Td>
-            <Td>2</Td>
-            <Td>3</Td>
-          </Tr>
+          {stations.map((station) => (
+            <TableRow station={station} />
+          ))}
         </Tbody>
       </Table>
     </Box>

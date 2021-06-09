@@ -4,30 +4,45 @@ import { VscHome } from "react-icons/vsc";
 import { SiGooglemaps, SiGooglecalendar } from "react-icons/si";
 import { FaBalanceScale, FaArrowUp, FaArrowDown } from "react-icons/fa";
 
-import React from "react";
+import { React, useEffect, useState } from "react";
 
 export default function Details() {
+  const [station, setStation] = useState();
+
+  useEffect(() => {
+    const fetchDetails = async () => {
+      const response = await fetch("http://localhost:8080/station/id=2");
+      const data = response.json();
+      setStation(data);
+    };
+    fetchDetails();
+  });
+
   return (
     <>
       <Container p="20px">
         <List spacing={4}>
           <ListItem>
-            <ListIcon as={VscHome}></ListIcon>Station Name:
+            <ListIcon as={VscHome}></ListIcon>Station Name:{" "}
+            {station.stationName}
           </ListItem>
           <ListItem>
-            <ListIcon as={SiGooglemaps}></ListIcon>Province:
+            <ListIcon as={SiGooglemaps}></ListIcon>Province: {station.province}
           </ListItem>
           <ListItem>
-            <ListIcon as={SiGooglecalendar}></ListIcon>Date:
+            <ListIcon as={SiGooglecalendar}></ListIcon>Date: {station.date}
           </ListItem>
           <ListItem>
-            <ListIcon as={FaBalanceScale}></ListIcon>Mean Temperature:
+            <ListIcon as={FaBalanceScale}></ListIcon>Mean Temperature:{" "}
+            {station.meanTemp}
           </ListItem>
           <ListItem>
-            <ListIcon as={FaArrowUp}></ListIcon>Highest Monthly Temperature:
+            <ListIcon as={FaArrowUp}></ListIcon>Highest Monthly Temperature:{" "}
+            {station.highestTemp}
           </ListItem>
           <ListItem>
-            <ListIcon as={FaArrowDown}></ListIcon>Lowest Monthly Temperature:
+            <ListIcon as={FaArrowDown}></ListIcon>Lowest Monthly Temperature:{" "}
+            {station.lowestTemp}
           </ListItem>
         </List>
       </Container>

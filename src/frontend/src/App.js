@@ -8,8 +8,8 @@ class App extends React.Component {
   render() {
     return (
       <ChakraProvider>
-        {/* <Homepage /> */}
-        <DetailPage />
+        <Homepage />
+        {/* <DetailPage /> */}
       </ChakraProvider>
     );
   }
