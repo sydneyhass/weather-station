@@ -6,18 +6,7 @@ import { FaBalanceScale, FaArrowUp, FaArrowDown } from "react-icons/fa";
 
 import { React, useEffect, useState } from "react";
 
-export default function Details() {
-  const [station, setStation] = useState();
-
-  useEffect(() => {
-    const fetchDetails = async () => {
-      const response = await fetch("http://localhost:8080/station/id=2");
-      const data = response.json();
-      setStation(data);
-    };
-    fetchDetails();
-  });
-
+export default function Details({ station }) {
   return (
     <>
       <Container p="20px">
