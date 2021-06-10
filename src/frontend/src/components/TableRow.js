@@ -1,18 +1,6 @@
 import React from "react";
-
-import {
-  Table,
-  Thead,
-  Tbody,
-  Tfoot,
-  Tr,
-  Th,
-  Td,
-  TableCaption,
-  Flex,
-  Box,
-  Link,
-} from "@chakra-ui/react";
+import { BrowserRouter as Router, Link as Route } from "react-router-dom";
+import { Tr, Td, Link } from "@chakra-ui/react";
 
 export default function TableRow({ station }) {
   return (
@@ -20,7 +8,7 @@ export default function TableRow({ station }) {
       <Td>{station.stationName}</Td>
       <Td>{station.province}</Td>
       <Td>
-        <Link href={"/station/id=" + station.id}>{station.meanTemp}</Link>
+        <Link>{station.meanTemp}</Link>
       </Td>
     </Tr>
   );

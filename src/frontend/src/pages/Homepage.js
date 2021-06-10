@@ -3,7 +3,6 @@ import DateForm from "../components/DateForm";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import WeatherTable from "../components/WeatherTable";
-import TableRow from "../components/TableRow";
 
 export default function Homepage() {
   const [stations, setStations] = useState([]);

@@ -1,19 +1,13 @@
 import React from "react";
-
 import TableRow from "../components/TableRow";
-
 import {
   Table,
   Thead,
   Tbody,
-  Tfoot,
   Tr,
   Th,
-  Td,
   TableCaption,
-  Flex,
   Box,
-  Link,
 } from "@chakra-ui/react";
 
 export default function WeatherTable({ stations }) {

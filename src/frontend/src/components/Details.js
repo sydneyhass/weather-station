@@ -1,10 +1,8 @@
 import { Container, List, ListIcon, ListItem } from "@chakra-ui/layout";
-
 import { VscHome } from "react-icons/vsc";
 import { SiGooglemaps, SiGooglecalendar } from "react-icons/si";
 import { FaBalanceScale, FaArrowUp, FaArrowDown } from "react-icons/fa";
-
-import { React, useEffect, useState } from "react";
+import { React } from "react";
 
 export default function Details({ station }) {
   return (

@@ -7,7 +7,6 @@ import Details from "../components/Details";
 
 export default function DetailPage() {
   const [station, setStations] = useState({});
-
   const { id } = useParams();
 
   useEffect(() => {
